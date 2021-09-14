@@ -1,0 +1,23 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "My goal with this project is to build a battleship game, as per the Odin Project's specifications: https://www.theodinproject.com/paths/full-stack-javascript/courses/javascript/lessons/battleship",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rodri-97/battleship.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rodri-97/battleship/issues"
+  },
+  "homepage": "https://github.com/Rodri-97/battleship#readme",
+  "devDependencies": {
+    "webpack": "^5.52.1",
+    "webpack-cli": "^4.8.0"
+  }
+}
