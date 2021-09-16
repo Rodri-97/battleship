@@ -1,4 +1,4 @@
-const Ship = require("./index.js");
+const Ship = require("../factories/ship.js");
 
 const newShip = Ship(5);
 
@@ -22,3 +22,5 @@ test("Ship sunk after hitting all of the targets", () => {
   newShip.hit(4);
   expect(newShip.isSunk()).toBe(true);
 });
+
+// npm run test ship.test.js
