@@ -1,7 +1,21 @@
-const testFunction = require('./index.js');
+const Ship = require("./index.js");
 
-test('adds 1 + 2 to equal 3', () => {
-  expect(testFunction(1, 2)).toBe(3);
+const newShip = Ship(5);
+
+test("Gives correct length", () =>  {
+  expect(newShip.length).toBe(5);
 });
 
-// npm run test index.test.js
+test("Ship not sunk by default", () => {
+  expect(newShip.isSunk()).toBe(false);
+});
+
+test("Sink ship", () => {
+  newShip.hit(0);
+  newShip.hit(1);
+  newShip.hit(2);
+  newShip.hit(3);
+  newShip.hit(4);
+  expect(newShip.isSunk()).toBe(true);
+});
+
