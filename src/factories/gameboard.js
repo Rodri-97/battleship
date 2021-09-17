@@ -1,4 +1,4 @@
-const Ship = require("./ship.js");
+const Ship = require("./ship.js"); // May be removed
 
 const Gameboard = (gridSize) => {
     const rows = new Array(gridSize);
