@@ -1,10 +1,15 @@
 const Ship = require("./ship.js");
 
 const Gameboard = (gridSize) => {
-    const lines = new Array(gridSize).fill([]);
-    for (let i = 0; i < lines.length; i++) lines[i].push("");
+    const rows = new Array(gridSize);
+    for (let i = 0; i < rows.length; i++) rows[i] = new Array(gridSize).fill("");
 
-    return { lines };
+    const placeHorizontalShip = (row, startingColumn, ship) => {
+        const endingColumn = startingColumn + ship.length;
+        for (let i = startingColumn; i < endingColumn; i++) rows[row][i] = "S";
+    };
+
+    return { rows, placeHorizontalShip };
 };
 
 module.exports = Gameboard;

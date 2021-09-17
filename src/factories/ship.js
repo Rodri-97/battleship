@@ -6,8 +6,8 @@ const Ship = (length) => {
     };
 
     const isSunk = () => {
-        for (let position of positionsHit) {
-            if (position === false) return false;
+        for (let i = 0; i < positionsHit.length; i++) {
+            if (positionsHit[i] === false) return false;
         };
         return true;
     };
