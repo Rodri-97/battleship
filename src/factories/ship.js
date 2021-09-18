@@ -15,6 +15,8 @@ const Ship = (length) => {
     };
 
     return { id, length, hit, isSunk };
+
+    // Add: axis (x or y), startingRow, startingColumn
 };
 
 module.exports = Ship;

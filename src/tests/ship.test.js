@@ -22,3 +22,5 @@ test("Ship sunk after hitting all of the targets", () => {
   newShip.hit(4);
   expect(newShip.isSunk()).toBe(true);
 });
+
+// npm run test ship.test.js
