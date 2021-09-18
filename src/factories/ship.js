@@ -1,18 +1,19 @@
 const Ship = (length) => {
-    const positionsHit = new Array(length).fill(false);
-
+    const positions = new Array(length);
+    for (let i = 0; i < positions.length; i++) positions[i] = "S";
+    
     const hit = (number) => {
-        positionsHit[number] = true;
+        positions[number] = "X";
     };
 
     const isSunk = () => {
-        for (let i = 0; i < positionsHit.length; i++) {
-            if (positionsHit[i] === false) return false;
+        for (let i = 0; i < positions.length; i++) {
+            if (positions[i] === "S") return false;
         };
         return true;
     };
 
-    return { length, hit, isSunk };
+    return { positions, length, hit, isSunk };
 };
 
 module.exports = Ship;

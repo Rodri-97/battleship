@@ -1,4 +1,4 @@
-const Ship = require("./ship.js"); // May be removed
+const Ship = require("./ship.js");
 
 const Gameboard = (gridSize) => {
     const rows = new Array(gridSize);
@@ -6,7 +6,11 @@ const Gameboard = (gridSize) => {
 
     const placeHorizontalShip = (row, startingColumn, ship) => {
         const endingColumn = startingColumn + ship.length;
-        for (let i = startingColumn; i < endingColumn; i++) rows[row][i] = "S";
+        let positionIndex = 0;
+        for (let i = startingColumn; i < endingColumn; i++) {
+            rows[row][i] = ship.positions[positionIndex];
+            positionIndex++;
+        };
     };
 
     return { rows, placeHorizontalShip };
