@@ -1,19 +1,20 @@
 const Ship = (length) => {
-    const positions = new Array(length);
-    for (let i = 0; i < positions.length; i++) positions[i] = "S";
+    let id; // Defined in gameboard.js
+    const positionsHit = new Array(length);
+    for (let i = 0; i < positionsHit.length; i++) positionsHit[i] = false;
     
     const hit = (number) => {
-        positions[number] = "X";
+        positionsHit[number] = true;
     };
 
     const isSunk = () => {
-        for (let i = 0; i < positions.length; i++) {
-            if (positions[i] === "S") return false;
+        for (let i = 0; i < positionsHit.length; i++) {
+            if (positionsHit[i] === false) return false;
         };
         return true;
     };
 
-    return { positions, length, hit, isSunk };
+    return { id, length, hit, isSunk };
 };
 
 module.exports = Ship;
