@@ -35,8 +35,24 @@ test("Place vertical ship", () => {
     for (let r = firstRow; r <= lastRow; r++) expect(board.rows[r][9]).toEqual("S1");
 });
 
-test("Don't override existing ships", () => {
-    const overShip = Ship(2);
+test("Prevent ships out of grid", () => {
+    const outShip1 = Ship(11);
+    board.placeShip(outShip1, "x", 0, 0);
+    expect(board.rows[0][0]).not.toEqual("S2");
+
+    const outShip2 = Ship(6);
+    board.placeShip(outShip2, "y", 8, 3);
+    expect(board.rows[8][3]).not.toEqual("S2");
+
+    const validShip = Ship(2);
+    board.placeShip(validShip, "x", 0, 0);
+    expect(board.rows[0][0]).toEqual("S2");
+});
+
+test("Doesn't override existing ships", () => {
+    const overShip = Ship(3);
+    board.placeShip(overShip, "y", 0, 0);
+    expect(board.rows[0][0]).not.toEqual("S3");
 });
 
 // npm run test gameboard.test.js
