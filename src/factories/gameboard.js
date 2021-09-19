@@ -5,12 +5,39 @@ const Gameboard = (gridSize) => {
     for (let i = 0; i < rows.length; i++) rows[i] = new Array(gridSize).fill("");
     let allShips = [];
 
+    const isOutOfGrid = (ship) => {
+        if (ship.length > gridSize) return true;
+        if (ship.axis === "x") {
+            const lastColumn = ship.firstColumn + ship.length - 1;
+            if (lastColumn >= gridSize) return true;
+        } else if (ship.axis === "y") {
+            const lastRow = ship.firstRow + ship.length - 1;
+            if (lastRow >= gridSize) return true;
+        };
+        return false;
+    };
+
+    const overridesExistingShip = (ship) => {
+        if (ship.axis === "x") {
+            const r = ship.firstRow;
+            const lastColumn = ship.firstColumn + ship.length - 1;
+            for (let c = ship.firstColumn; c <= lastColumn; c++) if (rows[r][c] != "") return true;
+        } else if (ship.axis === "y") {
+            const lastRow = ship.firstRow + ship.length - 1;
+            const c = ship.firstColumn;
+            for (let r = ship.firstRow; r <= lastRow; r++) if (rows[r][c] != "") return true;
+        };
+        return false;
+    };
+
     const placeShip = (ship, axis, firstRow, firstColumn) => {
-        allShips.push(ship);
-        ship.id = allShips.length - 1;
         ship.axis = axis;
         ship.firstRow = firstRow;
         ship.firstColumn = firstColumn;
+        if (isOutOfGrid(ship)) return;
+        if (overridesExistingShip(ship)) return;
+        allShips.push(ship);
+        ship.id = allShips.length - 1;
 
         if (axis === "x") {
             const r = firstRow;
