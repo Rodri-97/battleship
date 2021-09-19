@@ -101,23 +101,3 @@ const Gameboard = (gridSize) => {
 };
 
 module.exports = Gameboard;
-
-/*const gridSize = 5;
-const board = Gameboard(gridSize);
-const printBoard = () => {
-    console.log(board.rows);
-    console.log("");
-};
-
-const firstShip = Ship(4);
-board.placeShip(firstShip, "x", 3, 2);
-
-const secondShip = Ship(9);
-board.placeShip(secondShip, "y", 1, 8);
-
-const thirdShip = Ship(2);
-board.placeShip(thirdShip, "x", 0, 0);
-
-printBoard();*/
-
-// node gameboard.js
