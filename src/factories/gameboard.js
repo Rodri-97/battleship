@@ -5,22 +5,25 @@ const Gameboard = (gridSize) => {
     for (let i = 0; i < rows.length; i++) rows[i] = new Array(gridSize).fill("");
     let allShips = [];
 
-    const placeHorizontalShip = (row, startingColumn, ship) => {
+    const placeShip = (ship, axis, startingRow, startingColumn) => {
         allShips.push(ship);
         ship.id = allShips.length - 1;
-        const endingColumn = startingColumn + ship.length;
-        for (let i = startingColumn; i < endingColumn; i++) {
-            rows[row][i] = `S${ship.id}`;
+        ship.axis = axis;
+        ship.startingRow = startingRow;
+        ship.startingColumn = startingColumn;
+
+        if (axis === "x") {
+            const r = startingRow;
+            const endingColumn = startingColumn + ship.length;
+            for (let c = startingColumn; c < endingColumn; c++) rows[r][c] = `S${ship.id}`;
+        } else if (axis === "y") {
+            const c = startingColumn;
+            const endingRow = startingRow + ship.length;
+            for (let r = startingRow; r < endingRow; r++) rows[r][c] = `S${ship.id}`;
         };
     };
 
-    // const placeVerticalShip = (startingRow, column, ship) => {};
-
-    const getPositionIndexInShip = () => {
-
-    };
-
-    const receiveAttack = (row, column) => {
+    /*const receiveAttack = (row, column) => {
         const positionAttacked = rows[row][column];
         const shipId = positionsAttacked.slice(1);
         const ship = allShips[shipId];
@@ -28,9 +31,9 @@ const Gameboard = (gridSize) => {
             positionAttacked[0] = "X";
             ship.hit();
         };
-    };
+    };*/
 
-    return { rows, placeHorizontalShip };
+    return { rows, placeShip };
 };
 
 module.exports = Gameboard;

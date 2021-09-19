@@ -1,5 +1,9 @@
 const Ship = (length) => {
-    let id; // Defined in gameboard.js
+    let id;
+    let axis;
+    let startingRow;
+    let startingColumn;
+
     const positionsHit = new Array(length);
     for (let i = 0; i < positionsHit.length; i++) positionsHit[i] = false;
     
@@ -14,9 +18,7 @@ const Ship = (length) => {
         return true;
     };
 
-    return { id, length, hit, isSunk };
-
-    // Add: axis (x or y), startingRow, startingColumn
+    return { id, axis, startingRow, startingColumn, length, hit, isSunk };
 };
 
 module.exports = Ship;
