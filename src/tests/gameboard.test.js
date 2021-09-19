@@ -62,6 +62,10 @@ test("Receive attack", () => {
     expect(ship2.isSunk()).toBe(false);
     board.receiveAttack(0, 1);
     expect(ship2.isSunk()).toBe(true);
+    board.receiveAttack(0, 2);
+    const missedShot = board.missedShots[0];
+    expect(missedShot.row).toBe(0);
+    expect(missedShot.column).toBe(2);
 });
 
 // npm run test gameboard.test.js

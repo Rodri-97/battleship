@@ -4,6 +4,11 @@ const Gameboard = (gridSize) => {
     const rows = new Array(gridSize);
     for (let i = 0; i < rows.length; i++) rows[i] = new Array(gridSize).fill("");
     let allShips = [];
+    let missedShots = [];
+
+    const missedShot = (row, column) => {
+        return { row, column };
+    };
 
     const isOutOfGrid = (ship) => {
         if (ship.length > gridSize) return true;
@@ -78,12 +83,13 @@ const Gameboard = (gridSize) => {
             rows[row][column] = `X${shipId}`;
             const positionInShip = getPositionInShip(row, column, ship);
             ship.hit(positionInShip);
-        } /*else if(positionAttacked[0] !== "S") {
-
-        }*/;
+        } else if (positionAttacked[0] !== "S") {
+            const shot = missedShot(row, column);
+            missedShots.push(shot);
+        };
     };
 
-    return { rows, allShips, placeShip, receiveAttack };
+    return { rows, allShips, missedShots, placeShip, receiveAttack };
 };
 
 module.exports = Gameboard;
