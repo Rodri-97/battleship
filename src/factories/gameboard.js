@@ -5,21 +5,21 @@ const Gameboard = (gridSize) => {
     for (let i = 0; i < rows.length; i++) rows[i] = new Array(gridSize).fill("");
     let allShips = [];
 
-    const placeShip = (ship, axis, startingRow, startingColumn) => {
+    const placeShip = (ship, axis, firstRow, firstColumn) => {
         allShips.push(ship);
         ship.id = allShips.length - 1;
         ship.axis = axis;
-        ship.startingRow = startingRow;
-        ship.startingColumn = startingColumn;
+        ship.firstRow = firstRow;
+        ship.firstColumn = firstColumn;
 
         if (axis === "x") {
-            const r = startingRow;
-            const endingColumn = startingColumn + ship.length;
-            for (let c = startingColumn; c < endingColumn; c++) rows[r][c] = `S${ship.id}`;
+            const r = firstRow;
+            const lastColumn = firstColumn + ship.length - 1;
+            for (let c = firstColumn; c <= lastColumn; c++) rows[r][c] = `S${ship.id}`;
         } else if (axis === "y") {
-            const c = startingColumn;
-            const endingRow = startingRow + ship.length;
-            for (let r = startingRow; r < endingRow; r++) rows[r][c] = `S${ship.id}`;
+            const c = firstColumn;
+            const lastRow = firstRow + ship.length - 1;
+            for (let r = firstRow; r <= lastRow; r++) rows[r][c] = `S${ship.id}`;
         };
     };
 

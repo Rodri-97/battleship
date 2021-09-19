@@ -1,8 +1,8 @@
 const Ship = (length) => {
     let id;
     let axis;
-    let startingRow;
-    let startingColumn;
+    let firstRow;
+    let firstColumn;
 
     const positionsHit = new Array(length);
     for (let i = 0; i < positionsHit.length; i++) positionsHit[i] = false;
@@ -18,7 +18,7 @@ const Ship = (length) => {
         return true;
     };
 
-    return { id, axis, startingRow, startingColumn, length, hit, isSunk };
+    return { id, axis, firstRow, firstColumn, length, hit, isSunk };
 };
 
 module.exports = Ship;

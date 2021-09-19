@@ -20,17 +20,19 @@ test("Grid correclty initialized", () => {
 test("Place horizontal ship", () => {
     const horizontalShip = Ship(4);
     const row = 3;
-    const startingColumn = 2;
-    board.placeShip(horizontalShip, "x", row, startingColumn);
-    for (let c = 2; c < 6; c++) expect(board.rows[3][c]).toEqual("S0");
+    const firstColumn = 2;
+    const lastColumn = firstColumn + horizontalShip.length - 1;
+    board.placeShip(horizontalShip, "x", row, firstColumn);
+    for (let c = firstColumn; c <= lastColumn; c++) expect(board.rows[3][c]).toEqual("S0");
 });
 
 test("Place vertical ship", () => {
     const verticalShip = Ship(5);
-    const startingRow = 4;
+    const firstRow = 4;
+    const lastRow = firstRow + verticalShip.length - 1;
     const column = 7;
-    board.placeShip(verticalShip, "y", startingRow, column);
-    for (let r = 4; r < 9; r++) expect(board.rows[r][7]).toEqual("S1");
+    board.placeShip(verticalShip, "y", firstRow, column);
+    for (let r = firstRow; r <= lastRow; r++) expect(board.rows[r][7]).toEqual("S1");
 });
 
 // npm run test gameboard.test.js
