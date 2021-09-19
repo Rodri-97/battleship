@@ -89,7 +89,15 @@ const Gameboard = (gridSize) => {
         };
     };
 
-    return { rows, allShips, missedShots, placeShip, receiveAttack };
+    const allShipsSunk = () => {
+        for (let i = 0; i < allShips.length; i++) {
+            const ship = allShips[i];
+            if (ship.isSunk() === false) return false;
+        };
+        return true;
+    };
+
+    return { rows, allShips, missedShots, placeShip, receiveAttack, allShipsSunk };
 };
 
 module.exports = Gameboard;
