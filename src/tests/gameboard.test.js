@@ -55,4 +55,13 @@ test("Doesn't override existing ships", () => {
     expect(board.rows[0][0]).not.toEqual("S3");
 });
 
+test("Receive attack", () => {
+    board.receiveAttack(0, 0);
+    expect(board.rows[0][0]).toEqual("X2");
+    const ship2 = board.allShips[2];
+    expect(ship2.isSunk()).toBe(false);
+    board.receiveAttack(0, 1);
+    expect(ship2.isSunk()).toBe(true);
+});
+
 // npm run test gameboard.test.js

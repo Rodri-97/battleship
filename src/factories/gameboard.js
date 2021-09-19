@@ -49,17 +49,41 @@ const Gameboard = (gridSize) => {
         };
     };
 
-    /*const receiveAttack = (row, column) => {
-        const positionAttacked = rows[row][column];
-        const shipId = positionsAttacked.slice(1);
-        const ship = allShips[shipId];
-        if (positionAttacked[0] === "S") {
-            positionAttacked[0] = "X";
-            ship.hit();
-        };
-    };*/
+    const getPositionInShip = (row, column, ship) => {
+        const firstRow = ship.firstRow;
+        const firstColumn = ship.firstColumn;
+        let counter = 0;
 
-    return { rows, placeShip };
+        if (ship.axis === "x") {
+            const lastColumn = firstColumn + ship.length - 1;
+            for (let c = firstColumn; c <= lastColumn; c++) {
+                if (c === column) return counter;
+                counter++;
+            };
+        } else if (ship.axis === "y") {
+            const lastRow = firstRow + ship.length - 1;
+            for (let r = firstRow; r <= lastRow; r++) {
+                if (r === row) return counter;
+                counter++;
+            };
+        };
+    };
+
+    const receiveAttack = (row, column) => {
+        const positionAttacked = rows[row][column];
+        
+        if (positionAttacked[0] === "S") {
+            const shipId = positionAttacked.slice(1);
+            const ship = allShips[shipId];
+            rows[row][column] = `X${shipId}`;
+            const positionInShip = getPositionInShip(row, column, ship);
+            ship.hit(positionInShip);
+        } /*else if(positionAttacked[0] !== "S") {
+
+        }*/;
+    };
+
+    return { rows, allShips, placeShip, receiveAttack };
 };
 
 module.exports = Gameboard;
