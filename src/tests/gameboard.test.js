@@ -30,9 +30,13 @@ test("Place vertical ship", () => {
     const verticalShip = Ship(5);
     const firstRow = 4;
     const lastRow = firstRow + verticalShip.length - 1;
-    const column = 7;
+    const column = 9;
     board.placeShip(verticalShip, "y", firstRow, column);
-    for (let r = firstRow; r <= lastRow; r++) expect(board.rows[r][7]).toEqual("S1");
+    for (let r = firstRow; r <= lastRow; r++) expect(board.rows[r][9]).toEqual("S1");
+});
+
+test("Don't override existing ships", () => {
+    const overShip = Ship(2);
 });
 
 // npm run test gameboard.test.js
