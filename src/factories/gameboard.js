@@ -34,8 +34,7 @@ const Gameboard = (gridSize) => {
         ship.axis = axis;
         ship.firstRow = firstRow;
         ship.firstColumn = firstColumn;
-        if (isOutOfGrid(ship)) return;
-        if (overridesExistingShip(ship)) return;
+        if (isOutOfGrid(ship) || overridesExistingShip(ship)) return;
         allShips.push(ship);
         ship.id = allShips.length - 1;
 
