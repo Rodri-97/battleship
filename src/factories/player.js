@@ -18,6 +18,21 @@ const Player = (name) => {
         const cruiser = Ship(3);
         const submarine = Ship(3);
         const destroyer = Ship(2);
+        const ships = [carrier, battleship, cruiser, submarine, destroyer];
+
+        for (let i = 0; i < ships.length; i++) {
+            const ship = ships[i];
+            const axis = randomAxis();
+            const row = randomNumber(0, 10);
+            const column = randomNumber(0, 10);
+            let placeShipOnBoard = board.placeShip(ship, axis, row, column);
+            while (placeShipOnBoard === "Invalid position") {
+                const newAxis = randomAxis();
+                const newRow = randomNumber(0, 10);
+                const newColumn = randomNumber(0, 10);
+                placeShipOnBoard = board.placeShip(ship, newAxis, newRow, newColumn);
+            };
+        };
     };
 
     const randomPlay = (enemyBoard) => {
@@ -30,35 +45,9 @@ const Player = (name) => {
         attackEnemyBoard(enemyBoard, randomRow, randomColumn);
     };
 
-    return { name, board, attackEnemyBoard, randomPlay };
+    return { name, board, attackEnemyBoard, placeShipsRandomly, randomPlay };
 };
 
 module.exports = Player;
-/*
-const player1 = Player("Rodrigo");
-const board1 = player1.board;
-const ship1 = Ship(2);
-const ship2 = Ship(10);
-const ship3 = Ship(6);
-const ship4 = Ship(4);
-board1.placeShip(ship1, "x", 1, 1);
-board1.placeShip(ship2, "y", 0, 0);
-board1.placeShip(ship3, "x", 3, 3);
-board1.placeShip(ship4, "y", 6, 4);
-
-const player2 = Player("Computer");
-const shipC = Ship(2);
-player2.board.placeShip(shipC, "y", 2, 2);
-
-const printBoards = () => {
-    console.log(player1.board.rows);
-    console.log(" ");
-    console.log(player2.board.rows);
-    console.log(" ");
-};
-//printBoards();
-
-player2.randomPlay(player1.board);
-console.log(player1.board.rows);*/
 
 // node src/factories/player.js

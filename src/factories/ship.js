@@ -23,5 +23,3 @@ const Ship = (length) => {
 };
 
 module.exports = Ship;
-
-// node src/factories/ship.js
