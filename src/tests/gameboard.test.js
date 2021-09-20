@@ -1,3 +1,5 @@
+// npm run test gameboard.test.js
+
 const Gameboard = require("../factories/gameboard.js");
 const Ship = require("../factories/ship.js");
 const { arraysEqual } = require("../helpers.js");
@@ -89,5 +91,3 @@ test("Report if all ships have been sunk", () => {
     expect(ship1.isSunk()).toBe(true);
     expect(board.allShipsSunk()).toBe(true);
 });
-
-// npm run test gameboard.test.js

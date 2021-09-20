@@ -1,3 +1,5 @@
+// npm run test player.test.js
+
 const Player = require("../factories/player.js");
 const Ship = require("../factories/ship.js");
 const { countElement, countSubstring } = require("../helpers.js");
@@ -57,5 +59,3 @@ test("Computer attacks randomly", () => {
     expect(XsInHumanBoard).toBe(1);
     expect(computer.allPlays.length).toBe(1);
 });
-
-// npm run test player.test.js

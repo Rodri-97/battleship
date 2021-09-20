@@ -1,3 +1,5 @@
+// npm run test ship.test.js
+
 const Ship = require("../factories/ship.js");
 
 test("Prevent ships too big or too small", () => {
@@ -33,5 +35,3 @@ test("Ship sunk after hitting all of the targets", () => {
   newShip.hit(4);
   expect(newShip.isSunk()).toBe(true);
 });
-
-// npm run test ship.test.js
