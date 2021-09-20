@@ -49,5 +49,3 @@ const Player = (name) => {
 };
 
 module.exports = Player;
-
-// node src/factories/player.js
