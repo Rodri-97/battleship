@@ -1,4 +1,5 @@
 const Ship = (length) => {
+    if (length < 2 || length > 5) return;
     let id;
     let axis;
     let firstRow;
@@ -22,3 +23,5 @@ const Ship = (length) => {
 };
 
 module.exports = Ship;
+
+// node src/factories/ship.js

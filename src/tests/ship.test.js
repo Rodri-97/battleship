@@ -1,5 +1,16 @@
 const Ship = require("../factories/ship.js");
 
+test("Prevent ships too big or too small", () => {
+  const bigShip = Ship(6);
+  const smallShip = Ship(1);
+  const ship5 = Ship(5);
+  const ship2 = Ship(2);
+  expect(bigShip).toBe(undefined);
+  expect(smallShip).toBe(undefined);
+  expect(ship5).not.toBe(undefined);
+  expect(ship2).not.toBe(undefined);
+});
+
 const newShip = Ship(5);
 
 test("Gives correct length", () =>  {

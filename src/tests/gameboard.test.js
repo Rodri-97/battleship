@@ -1,6 +1,6 @@
 const Gameboard = require("../factories/gameboard.js");
 const Ship = require("../factories/ship.js");
-const arraysEqual = require("../helpers.js");
+const { arraysEqual } = require("../helpers.js");
 
 test("Grid correclty initialized", () => {
     const board = Gameboard(10);
@@ -38,13 +38,10 @@ test("Place vertical ship", () => {
 
 test("Prevent ships out of grid", () => {
     const board = Gameboard(10);
-    const outShip1 = Ship(11);
-    board.placeShip(outShip1, "x", 0, 0);
-    expect(board.rows[0][0]).not.toEqual("S0");
 
-    const outShip2 = Ship(6);
-    board.placeShip(outShip2, "y", 8, 3);
-    expect(board.rows[8][3]).not.toEqual("S0");
+    const outShip = Ship(5);
+    board.placeShip(outShip, "y", 8, 8);
+    expect(board.rows[8][8]).not.toEqual("S0");
 
     const validShip = Ship(2);
     board.placeShip(validShip, "x", 0, 0);
@@ -54,11 +51,11 @@ test("Prevent ships out of grid", () => {
 
 test("Doesn't override existing ships", () => {
     const board = Gameboard(10);
-    const ship = Ship(10);
+    const ship = Ship(4);
     board.placeShip(ship, "y", 0, 7);
     const overShip = Ship(3);
-    board.placeShip(overShip, "x", 9, 7);
-    expect(board.rows[9][7]).toEqual("S0");
+    board.placeShip(overShip, "x", 2, 7);
+    expect(board.rows[2][7]).toEqual("S0");
 });
 
 

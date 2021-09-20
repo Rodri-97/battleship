@@ -11,7 +11,6 @@ const Gameboard = (gridSize) => {
     };
 
     const isOutOfGrid = (ship) => {
-        if (ship.length > gridSize) return true;
         if (ship.axis === "x") {
             const lastColumn = ship.firstColumn + ship.length - 1;
             if (lastColumn >= gridSize) return true;
@@ -83,9 +82,11 @@ const Gameboard = (gridSize) => {
             rows[row][column] = `X${shipId}`;
             const positionInShip = getPositionInShip(row, column, ship);
             ship.hit(positionInShip);
-        } else if (positionAttacked[0] !== "S") {
+            return "Success!";
+        } else {
             const shot = missedShot(row, column);
             missedShots.push(shot);
+            return "Missed";
         };
     };
 

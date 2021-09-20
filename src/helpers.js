@@ -6,4 +6,14 @@ const arraysEqual = (arr1, arr2) => {
     return true;
 };
 
-module.exports = arraysEqual;
+const randomNumber = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+};
+
+const randomAxis = () => {
+    const axes = ["x", "y"];
+    const randomIndex = randomNumber(0, 2);
+    return axes[randomIndex];
+};
+
+module.exports = { arraysEqual, randomNumber, randomAxis };
