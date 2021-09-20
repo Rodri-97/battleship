@@ -45,7 +45,7 @@ const Player = (name) => {
         attackEnemyBoard(enemyBoard, randomRow, randomColumn);
     };
 
-    return { name, board, attackEnemyBoard, placeShipsRandomly, randomPlay };
+    return { name, board, allPlays, attackEnemyBoard, placeShipsRandomly, randomPlay };
 };
 
 module.exports = Player;

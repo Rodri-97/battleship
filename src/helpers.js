@@ -16,4 +16,26 @@ const randomAxis = () => {
     return axes[randomIndex];
 };
 
-module.exports = { arraysEqual, randomNumber, randomAxis };
+const countElement = (_2Darray, element) => {
+    const arr = _2Darray;
+    let counter = 0;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            if (arr[i][j] === element) counter++;
+        };
+    };
+    return counter;
+};
+
+const countSubstring = (_2Darray, substring) => {
+    const arr = _2Darray;
+    let counter = 0;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr[i].length; j++) {
+            if (arr[i][j].includes(substring)) counter++;
+        };
+    };
+    return counter;
+};
+
+module.exports = { arraysEqual, randomNumber, randomAxis, countElement, countSubstring };
