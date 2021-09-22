@@ -1,19 +1,39 @@
-h1 {
+#title {
     text-align: center;
 }
 
-.board {
-    background-color: blue;
-    padding: 1rem;
-    height: 400px;
+#prompt {
+    border: 3px solid red;
+    text-align: center;
+}
+
+#ships-div {
     display: grid;
+    grid-gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 #container {
     max-width: 1200px;
     margin: 0 auto;
-    display: grid;
     grid-gap: 2rem;
+    display: none;
+}
+
+.board {
+    background-color: blue;
+    padding: 1rem;
+    height: 425px;
+    width: 525px;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    display: none;
+}
+
+.square {
+    border: 4px solid red;
+    background-color: white;
 }
 
 @media (min-width: 600px) {

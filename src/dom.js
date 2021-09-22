@@ -1,19 +1,31 @@
 export const makeBoards = () => {
-    const boards = document.getElementsByClassName("board");
+    const newGameBtn = document.getElementById("new-game-btn");
+    newGameBtn.style.display = "none";
+
+    const container = document.getElementById("container");
+    container.style.display = "grid";
+    const playerBoard = document.createElement("div");
+    playerBoard.className = "board";
+    playerBoard.id = "player-board";
+    const computerBoard = document.createElement("div");
+    computerBoard.className = "board";
+    computerBoard.id = "computer-board";
+    const boards = [playerBoard, computerBoard];
     const totalSize = 10 * 10;
 
     for (let i = 0; i < boards.length; i++) {
         const board = boards[i];
-        board.style.width = "525px";
-        board.style.height = "425px";
-        board.style.gridTemplateColumns = `repeat(10, 1fr`;
-        board.style.gridTemplateRows = `repeat(10, 1fr`;
+        container.append(board);
+        board.style.display = "grid";
 
         for (let i = 0; i < totalSize; i++) {
             const square = document.createElement("div");
-            square.style.border = "4px solid red";
-            square.style.backgroundColor = "white";
+            square.className = "square";
             board.append(square);
         };
     };
+};
+
+export const placeShipsOnBoard = () => {
+
 };

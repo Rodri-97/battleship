@@ -1,3 +1,6 @@
 import * as DOM from "./dom.js";
 
-DOM.makeBoards();
+const newGameBtn = document.getElementById("new-game-btn");
+newGameBtn.addEventListener("click", () => {
+    DOM.makeBoards();
+});
