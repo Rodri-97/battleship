@@ -1,1 +1,1 @@
-console.log("test");
+(()=>{"use strict";(()=>{const e=document.getElementsByClassName("board");for(let t=0;t<e.length;t++){const l=e[t];l.style.width="525px",l.style.height="425px",l.style.gridTemplateColumns="repeat(10, 1fr",l.style.gridTemplateRows="repeat(10, 1fr";for(let e=0;e<100;e++){const e=document.createElement("div");e.style.border="4px solid red",e.style.backgroundColor="white",l.append(e)}}})()})();
