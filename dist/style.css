@@ -1,0 +1,21 @@
+h1 {
+    text-align: center;
+}
+
+.board {
+    background-color: blue;
+    padding: 1rem;
+    height: 400px;
+    display: grid;
+}
+
+#container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-gap: 2rem;
+}
+
+@media (min-width: 600px) {
+    #container { grid-template-columns: repeat(2, 1fr); }
+}

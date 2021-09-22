@@ -1,6 +1,4 @@
-const Ship = require("./ship.js");
-
-const Gameboard = (gridSize) => {
+export const Gameboard = (gridSize) => {
     const rows = new Array(gridSize);
     for (let i = 0; i < rows.length; i++) rows[i] = new Array(gridSize).fill("");
     let allShips = [];
@@ -101,4 +99,4 @@ const Gameboard = (gridSize) => {
     return { rows, allShips, missedShots, placeShip, receiveAttack, allShipsSunk };
 };
 
-module.exports = Gameboard;
+//module.exports = Gameboard;

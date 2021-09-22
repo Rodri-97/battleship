@@ -1,7 +1,7 @@
-const Player = require("./player.js");
-//const Gameboard = require("./gameboard.js");
+//const Player = require("./player.js");
+import { Player } from "./player.js";
 
-const newGame = (player) => {
+export const newGame = (player) => {
     const computer = Player("Computer");
     computer.placeShipsRandomly();
     const noWinner = !player.board.allShipsSunk() && !computer.board.allShipsSunk();
@@ -10,8 +10,8 @@ const newGame = (player) => {
     };
 };
 
-const playGame = (player, computer) => {
+export const playGame = (player, computer) => {
 
 };
 
-module.exports = { newGame, playGame };
+//module.exports = { newGame, playGame };

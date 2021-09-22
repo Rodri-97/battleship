@@ -1,4 +1,4 @@
-const Ship = (length) => {
+export const Ship = (length) => {
     if (length < 2 || length > 5) return;
     let id;
     let axis;
@@ -22,4 +22,4 @@ const Ship = (length) => {
     return { id, axis, firstRow, firstColumn, length, hit, isSunk };
 };
 
-module.exports = Ship;
+//module.exports = Ship;

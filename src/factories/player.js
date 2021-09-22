@@ -1,8 +1,12 @@
-const Gameboard = require("./gameboard.js");
-const Ship = require("./ship.js");
-const { randomNumber, randomAxis } = require("../helpers.js");
+//const Gameboard = require("./gameboard.js");
+//const Ship = require("./ship.js");
+//const { randomNumber, randomAxis } = require("../helpers.js");
 
-const Player = (name) => {
+import { Gameboard } from "./gameboard.js";
+import { Ship } from "./ship.js";
+import { randomNumber, randomAxis } from "../helpers.js";
+
+export const Player = (name) => {
     const board = Gameboard(10);
     const allPlays = [];
 
@@ -48,4 +52,4 @@ const Player = (name) => {
     return { name, board, allPlays, attackEnemyBoard, placeShipsRandomly, randomPlay };
 };
 
-module.exports = Player;
+//module.exports = Player;
