@@ -1,3 +1,5 @@
+// Pseudocode
+
 export const makeBoards = () => {
     const newGameBtn = document.getElementById("new-game-btn");
     newGameBtn.style.display = "none";
