@@ -38,4 +38,21 @@ export const countSubstring = (_2Darray, substring) => {
     return counter;
 };
 
+export const getDigits = (number) => {
+    let firstDigit;
+    let secondDigit;
+    const numStr = number.toString();
+
+    if (numStr.length === 1) {
+        firstDigit = 0;
+        secondDigit = Number(numStr[0]);
+    } 
+    else if (numStr.length === 2) {
+        firstDigit = Number(numStr[0]);
+        secondDigit = Number(numStr[1]);
+    }; 
+
+    return [firstDigit, secondDigit];
+};
+
 //module.exports = { arraysEqual, randomNumber, randomAxis, countElement, countSubstring };

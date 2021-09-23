@@ -1,9 +1,20 @@
+import { getDigits } from "./helpers.js";
+
 export const renderBoards = (player) => {
     const newGameDiv = document.getElementById("new-game");
     newGameDiv.style.display = "none";
 
     const container = document.getElementById("container");
     container.style.display = "grid";
+
+    const playerBoardTitle = document.createElement("div");
+    playerBoardTitle.textContent = `${player.name}'s board`;
+    container.append(playerBoardTitle);
+
+    const computerBoardTitle = document.createElement("div");
+    computerBoardTitle.textContent = "Computer's board";
+    container.append(computerBoardTitle);
+
     const playerBoard = document.createElement("div");
     playerBoard.className = "board";
     playerBoard.id = "player-board";
@@ -55,9 +66,24 @@ const placePlayerShips = (player) => {
         let counter = firstSquareIndex;
         while (counter <= lastSquareIndex) {
             const square = playerSquares[counter];
-            square.style.backgroundColor = "orange";
+            square.style.backgroundColor = "green";
             if (ship.axis === "x") counter++;
             else if (ship.axis === "y") counter += 10;
         };
     };
+};
+
+// PSEUDOCODE
+// Convert square index to 2D array board index
+// Hit ship at that index
+// If a ship was hit, change square's background color to red
+// If no ship was hit, change square's background color to deep blue
+
+export const receiveAttackOnComputer = (square, index, computer) => {
+    const row = getDigits(index)[0];
+    const column = getDigits(index)[1];
+    const attack = computer.board.receiveAttack(row, column);
+
+    if (attack === "Success!") square.style.backgroundColor = "red";
+    square.textContent = "X";
 };
