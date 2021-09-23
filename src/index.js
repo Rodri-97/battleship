@@ -4,6 +4,7 @@ import * as DOM from "./dom.js";
 // --> Create two players
 // --> Randomly populate each player's board
 // Render gameboards using information from player's gameboard factory function
+// Hide computer board
 // Add event listener to take user input when attacking
 // Make computer attack randomly (switch turns after each player's attack)
 // At each turn, check if all ships of any player are sunk and end the game if so.
@@ -19,7 +20,7 @@ const startNewGame = () => {
     const computer = Player("Computer");
     human.placeShipsRandomly();
     computer.placeShipsRandomly();
-    DOM.renderBoards(human, computer);
+    DOM.renderBoards(human);
 };
 
 const newGameBtn = document.getElementById("new-game-btn");
