@@ -5,7 +5,7 @@ import * as DOM from "./dom.js";
 // --> Randomly populate each player's board
 // --> Render gameboards using information from player's gameboard factory function
 // --> Hide computer board
-// Add event listener to take user input when attacking
+// --> Add event listener to take user input when attacking
 // Make computer attack randomly (switch turns after each player's attack)
 // At each turn, check if all ships of any player are sunk and end the game if so.
 
@@ -27,8 +27,9 @@ const startNewGame = () => {
     for (let i = 100; i < squares.length; i++) {
         const square = squares[i];
         square.addEventListener("click", () => {
+            if (square.textContent === "X") return;
             const index = i - 100;
-            DOM.receiveAttackOnComputer(square, index, computer);
+            DOM.receiveAttackOnComputer(square, index, computer, human);
         });
     };
 };

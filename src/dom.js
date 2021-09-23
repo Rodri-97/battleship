@@ -73,17 +73,13 @@ const placePlayerShips = (player) => {
     };
 };
 
-// PSEUDOCODE
-// Convert square index to 2D array board index
-// Hit ship at that index
-// If a ship was hit, change square's background color to red
-// If no ship was hit, change square's background color to deep blue
-
-export const receiveAttackOnComputer = (square, index, computer) => {
+export const receiveAttackOnComputer = (square, index, computer, human) => {
     const row = getDigits(index)[0];
     const column = getDigits(index)[1];
     const attack = computer.board.receiveAttack(row, column);
 
     if (attack === "Success!") square.style.backgroundColor = "red";
     square.textContent = "X";
+
+    if (computer.board.allShipsSunk()) console.log(`${human.name} won!`);
 };
