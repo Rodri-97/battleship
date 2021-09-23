@@ -10,6 +10,11 @@ import * as DOM from "./dom.js";
 
 const startNewGame = () => {
     const playerName = document.getElementById("player-name").value;
+    if (playerName.toLowerCase() === "computer") {
+        alert("C'mon, you're not the computer! Try again.");
+        document.getElementById("player-name").value = "";
+        return;
+    };
     const human = Player(playerName);
     const computer = Player("Computer");
     human.placeShipsRandomly();

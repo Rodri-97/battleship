@@ -24,42 +24,38 @@ export const renderBoards = (human, computer) => {
             board.append(square);
         };
     };
-    placeShipsOnBoard(human, computer);
+    placePlayerShips(human);
+    placePlayerShips(computer);
 };
 
-// PSEUDOCODE:
-// Loop over each player's ships
-// CHeck if ship is vertical or horizontal
-// Place ship accordingly
-
-const placeShipsOnBoard = (human, computer) => {
-    const humanBoard = human.board.rows;
-    const computerBoard = computer.board.rows;
-
-    const humanShips = human.board.allShips;
-    const computerShips = computer.board.allShips;
+const placePlayerShips = (player) => {
+    const playerShips = player.board.allShips;
 
     const squares = document.getElementsByClassName("square");
-    const humanShipsUI = []
-    const computerShipsUI = [];
+    const playerSquares = [];
 
-    for (let i = 0; i < squares.length; i++) {
-        if (i < 100) humanShipsUI.push(squares[i]);
-        if (i >= 100) computerShipsUI.push(squares[i]);
+    if (player.name.toLowerCase() === "computer") {
+        for (let i = 100; i < 200; i++) playerSquares.push(squares[i]);
+    } else {
+        for (let i = 0; i < 100; i++) playerSquares.push(squares[i]);
     };
 
-    for (let i = 0; i < humanShips.length; i++) {
-        const ship = humanShips[i];
-        let index;
-        let square;
-        //if (ship.axis === "x") {
-        index = (ship.firstRow * 10) + ship.firstColumn;
-        square = humanShipsUI[index];
-        square.style.backgroundColor = "green";
-        //} else if (ship.axis === "y") {
-            
-        //};
+    for (let i = 0; i < playerShips.length; i++) {
+        const ship = playerShips[i];
+        const firstSquareIndex = (ship.firstRow * 10) + ship.firstColumn;
+        let lastSquareIndex;
+        if (ship.axis === "x") {
+            lastSquareIndex = firstSquareIndex + ship.length - 1;
+            for (let i = firstSquareIndex; i <= lastSquareIndex; i++) {
+                const square = playerSquares[i];
+                square.style.backgroundColor = "green";
+            };
+        } else if (ship.axis === "y") {
+            lastSquareIndex = firstSquareIndex + (10 * ship.length) - 1;
+            for (let i = firstSquareIndex; i <= lastSquareIndex; i += 10) {
+                const square = playerSquares[i];
+                square.style.backgroundColor = "green";
+            };
+        };
     };
-
-    console.log(humanShips);
 };
