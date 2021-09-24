@@ -27,9 +27,11 @@ const startNewGame = () => {
     for (let i = 100; i < squares.length; i++) {
         const square = squares[i];
         square.addEventListener("click", () => {
+            if (human.board.allShipsSunk() || computer.board.allShipsSunk()) return;
             if (square.textContent === "X") return;
             const index = i - 100;
             DOM.receiveAttackOnComputer(square, index, computer, human);
+            //DOM.receiveComputerAttack(computer, human);
         });
     };
 };

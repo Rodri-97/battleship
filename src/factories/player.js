@@ -13,7 +13,6 @@ export const Player = (name) => {
     const attackEnemyBoard = (enemyBoard, row, column) => {
         allPlays.push([row, column]);
         enemyBoard.receiveAttack(row, column);
-        if (enemyBoard.allShipsSunk()) return `${name} won!`;
     };
 
     const placeShipsRandomly = () => {
@@ -47,6 +46,7 @@ export const Player = (name) => {
             randomColumn = randomNumber(0, 10);
         };
         attackEnemyBoard(enemyBoard, randomRow, randomColumn);
+        return [randomRow, randomColumn];
     };
 
     return { name, board, allPlays, attackEnemyBoard, placeShipsRandomly, randomPlay };

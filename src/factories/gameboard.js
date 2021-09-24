@@ -80,11 +80,9 @@ export const Gameboard = (gridSize) => {
             rows[row][column] = `X${shipId}`;
             const positionInShip = getPositionInShip(row, column, ship);
             ship.hit(positionInShip);
-            return "Success!";
         } else {
             const shot = missedShot(row, column);
             missedShots.push(shot);
-            return "Missed";
         };
     };
 
