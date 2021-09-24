@@ -4,7 +4,7 @@
 
 import { Gameboard } from "./gameboard.js";
 import { Ship } from "./ship.js";
-import { randomNumber, randomAxis } from "../helpers.js";
+import { randomNumber, randomAxis, arrayContainsArray } from "../helpers.js";
 
 export const Player = (name) => {
     const board = Gameboard(10);
@@ -41,7 +41,7 @@ export const Player = (name) => {
     const randomPlay = (enemyBoard) => {
         let randomRow = randomNumber(0, 10);
         let randomColumn = randomNumber(0, 10);
-        while (allPlays.includes([randomRow, randomColumn])) {
+        while (arrayContainsArray(allPlays, [randomRow, randomColumn])) {
             randomRow = randomNumber(0, 10);
             randomColumn = randomNumber(0, 10);
         };

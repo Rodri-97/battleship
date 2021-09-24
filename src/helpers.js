@@ -55,4 +55,15 @@ export const getDigits = (number) => {
     return [firstDigit, secondDigit];
 };
 
+export const arrayContainsArray = (_2Darr, normalArr) => {
+    const arr1 = _2Darr;
+    const arr2 = normalArr;
+    for (let i = 0; i < arr1.length; i++) {
+        let counter = 0;
+        for (let j = 0; j < arr1[i].length; j++) if (arr1[i][j] === arr2[j]) counter += 1;
+        if (counter === arr2.length) return true;
+    };
+    return false;
+};
+
 //module.exports = { arraysEqual, randomNumber, randomAxis, countElement, countSubstring };
