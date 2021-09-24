@@ -9,10 +9,12 @@ export const renderBoards = (player) => {
 
     const playerBoardTitle = document.createElement("div");
     playerBoardTitle.textContent = `${player.name}'s board`;
+    playerBoardTitle.id = "player-board-title";
     container.append(playerBoardTitle);
 
     const computerBoardTitle = document.createElement("div");
     computerBoardTitle.textContent = "Computer's board";
+    computerBoardTitle.id = "computer-board-title";
     container.append(computerBoardTitle);
 
     const playerBoard = document.createElement("div");
@@ -74,6 +76,7 @@ const placePlayerShips = (player) => {
 };
 
 export const receiveAttackOnComputer = (square, index, computer, human) => {
+    if (computer.board.allShipsSunk()) return;
     const row = getDigits(index)[0];
     const column = getDigits(index)[1];
     const attack = computer.board.receiveAttack(row, column);
@@ -81,5 +84,9 @@ export const receiveAttackOnComputer = (square, index, computer, human) => {
     if (attack === "Success!") square.style.backgroundColor = "red";
     square.textContent = "X";
 
-    if (computer.board.allShipsSunk()) console.log(`${human.name} won!`);
+    if (computer.board.allShipsSunk()) {
+        const playerBoardTitle = document.getElementById("title");
+        playerBoardTitle.textContent = `${human.name} won!`;
+        playerBoardTitle.style.fontSize = "45px";
+    };
 };
