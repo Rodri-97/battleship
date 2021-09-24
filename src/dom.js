@@ -7,16 +7,6 @@ export const renderBoards = (player) => {
     const container = document.getElementById("container");
     container.style.display = "grid";
 
-    const playerBoardTitle = document.createElement("div");
-    playerBoardTitle.textContent = `${player.name}'s board`;
-    playerBoardTitle.id = "player-board-title";
-    container.append(playerBoardTitle);
-
-    const computerBoardTitle = document.createElement("div");
-    computerBoardTitle.textContent = "Computer's board";
-    computerBoardTitle.id = "computer-board-title";
-    container.append(computerBoardTitle);
-
     const playerBoard = document.createElement("div");
     playerBoard.className = "board";
     playerBoard.id = "player-board";
@@ -28,8 +18,15 @@ export const renderBoards = (player) => {
 
     for (let i = 0; i < boards.length; i++) {
         const board = boards[i];
-        container.append(board);
         board.style.display = "grid";
+        const boardDiv = document.createElement("div");
+        const boardTitle = document.createElement("div");
+        boardTitle.className = "board-title";
+        if (board.id === "player-board") boardTitle.textContent = `${player.name}'s board`;
+        else if (board.id === "computer-board") boardTitle.textContent = "Computer's board";
+        boardDiv.append(boardTitle);
+        boardDiv.append(board);
+        container.append(boardDiv);
 
         for (let i = 0; i < totalSize; i++) {
             const square = document.createElement("div");
