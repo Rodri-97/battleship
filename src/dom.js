@@ -72,6 +72,13 @@ export const renderBoards = (player) => {
     placePlayerShips(player);
 };
 
+const displayWinner = (winner) => {
+    const winningMessage = `${winner.name} won!`;
+    alert(winningMessage);
+    const title = document.getElementById("title");
+    title.textContent = winningMessage;
+};
+
 export const receiveAttackOnComputer = (square, index, computer, human) => {
     const row = getDigits(index)[0];
     const column = getDigits(index)[1];
@@ -79,23 +86,19 @@ export const receiveAttackOnComputer = (square, index, computer, human) => {
     const successfulAttack = computer.board.rows[row][column][0] === "X";
     if (successfulAttack) square.style.backgroundColor = "red";
     square.textContent = "X";
-    if (computer.board.allShipsSunk()) {
-        const winningMessage = `${human.name} won!`;
-        alert(winningMessage);
-        const title = document.getElementById("title");
-        title.textContent = winningMessage;
-    };
+    if (computer.board.allShipsSunk()) displayWinner(human);
 };
-/*
+
 export const receiveComputerAttack = (computer, human) => {
     const computerAttack = computer.randomPlay(human.board);
     const rowAttacked = computerAttack[0];
     const columnAttacked = computerAttack[1];
     let squareIndex = rowAttacked.toString() + columnAttacked.toString();
-    squareIndex = Number(squareAttacked);
+    squareIndex = Number(squareIndex);
     const squares = document.getElementsByClassName("square");
     const squareAttacked = squares[squareIndex];
     squareAttacked.textContent = "X";
-    if (squareAttacked.style.backgroundColor = "green") squareAttacked.style.backgroundColor = "red";
-    if (human.board.allShipsSunk()) alert("The computer won!");
-};*/
+    const successfulAttack = human.board.rows[rowAttacked][columnAttacked][0] === "X";
+    if (successfulAttack) squareAttacked.style.backgroundColor = "red";
+    if (human.board.allShipsSunk()) displayWinner(computer);
+};

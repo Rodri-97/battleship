@@ -31,7 +31,7 @@ const startNewGame = () => {
             if (square.textContent === "X") return;
             const index = i - 100;
             DOM.receiveAttackOnComputer(square, index, computer, human);
-            //DOM.receiveComputerAttack(computer, human);
+            DOM.receiveComputerAttack(computer, human);
         });
     };
 };
