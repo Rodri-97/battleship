@@ -57,8 +57,7 @@ export const renderBoards = (player) => {
         const boardDiv = document.createElement("div");
         const boardTitle = document.createElement("div");
         boardTitle.className = "board-title";
-        //if (board.id === "player-board") boardTitle.textContent = `${player.name}'s board`;
-        if (board.id === "player-board") boardTitle.textContent = "Place your carrier";
+        if (board.id === "player-board") boardTitle.textContent = `${player.name}'s board`;
         else if (board.id === "computer-board") boardTitle.textContent = "Computer's board";
         boardDiv.append(boardTitle);
         boardDiv.append(board);

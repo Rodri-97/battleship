@@ -4,6 +4,8 @@ import { getDigits } from "./helpers.js";
 import * as DOM from "./dom.js";
 
 const addShips = (human) => {
+    const title = document.getElementById("title");
+    title.textContent = "Place your carrier";
     const toggleBtn = document.getElementById("toggle-btn");
     toggleBtn.style.display = "block";
     toggleBtn.addEventListener("click", () => {
@@ -17,8 +19,6 @@ const addShips = (human) => {
         square.addEventListener("click", () => {
             let shipLength;
             let numberOfShips = human.board.allShips.length;
-            const title = document.getElementsByClassName("board-title")[0];
-    
             if (numberOfShips === 0) shipLength = 5;
             else if (numberOfShips === 1) shipLength = 4;
             else if (numberOfShips === 2) shipLength = 3;
@@ -50,6 +50,8 @@ const addShips = (human) => {
 };
 
 const startNewGame = (human) => {
+    const title = document.getElementById("title");
+    title.textContent = "The game has started!";
     const computer = Player("Computer");
     computer.placeShipsRandomly();
 
@@ -60,11 +62,12 @@ const startNewGame = (human) => {
     for (let i = 100; i < squares.length; i++) {
         const square = squares[i];
         square.addEventListener("click", () => {
-            const anyWinner = human.board.allShipsSunk() || computer.board.allShipsSunk();
+            let anyWinner = human.board.allShipsSunk() || computer.board.allShipsSunk();
             if (anyWinner) return;
             if (square.textContent === "X") return;
             const index = i - 100;
             DOM.receiveAttackOnComputer(square, index, computer, human);
+            anyWinner = human.board.allShipsSunk() || computer.board.allShipsSunk();
             if (anyWinner) return;
             DOM.receiveComputerAttack(computer, human);
         });
