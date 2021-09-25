@@ -55,6 +55,7 @@ export const renderBoards = (player) => {
         const board = boards[i];
         board.style.display = "grid";
         const boardDiv = document.createElement("div");
+        boardDiv.className = "board-div";
         const boardTitle = document.createElement("div");
         boardTitle.className = "board-title";
         if (board.id === "player-board") boardTitle.textContent = `${player.name}'s board`;
@@ -69,6 +70,13 @@ export const renderBoards = (player) => {
             board.append(square);
         };
     };
+
+    const toggleBtn = document.createElement("button");
+    toggleBtn.id = "toggle-btn";
+    toggleBtn.className = "button";
+    toggleBtn.textContent = "Horizontal";
+    const playerBoardDiv = document.getElementsByClassName("board-div")[0];
+    playerBoardDiv.append(toggleBtn);
     placePlayerShips(player);
 };
 
