@@ -1,17 +1,8 @@
 import { Player } from "./factories/player.js";
 import * as DOM from "./dom.js";
 
-const startNewGame = () => {
-    const playerName = document.getElementById("player-name").value;
-    if (playerName.toLowerCase() === "computer") {
-        alert("C'mon, you're not the computer! Try again.");
-        document.getElementById("player-name").value = "";
-        return;
-    };
-    const human = Player(playerName);
-    const computer = Player("Computer");
-    human.placeShipsRandomly();
-    computer.placeShipsRandomly();
+const startNewGame = (human, computer) => {
+    console.log(human.board.allShips)
     console.log(computer.board.allShips);
     DOM.renderBoards(human);
 
@@ -32,5 +23,15 @@ const startNewGame = () => {
 
 const newGameBtn = document.getElementById("new-game-btn");
 newGameBtn.addEventListener("click", () => {
-    startNewGame();
+    const playerName = document.getElementById("player-name").value;
+    if (playerName.toLowerCase() === "computer") {
+        alert("C'mon, you're not the computer! Try again.");
+        document.getElementById("player-name").value = "";
+        return;
+    };
+    const human = Player(playerName);
+    const computer = Player("Computer");
+    human.placeShipsRandomly();
+    computer.placeShipsRandomly();
+    startNewGame(human, computer);
 });
