@@ -56,10 +56,14 @@
     text-align: center;
 }
 
-#new-game-btn {
+.button {
     display: block;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
     cursor: pointer;
+}
+
+#toggle-btn {
+    display: none;
 }
