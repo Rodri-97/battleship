@@ -66,4 +66,23 @@ export const arrayContainsArray = (_2Darr, normalArr) => {
     return false;
 };
 
+const getAdjacents = (row, column) => {
+    const adjacents = [];
+    const r = row;
+    const c = column;
+
+    const top = [r-1, c];
+    const left = [r, c-1];
+    const right = [r, c+1];
+    const bottom = [r+1, c];
+    const positions = [top, left, right, bottom];
+
+    for (let i = 0; i < positions.length; i++) {
+        const position = positions[i];
+        const validPosition = position[0] >= 0 && position[0] <= 9 && position[1] >= 0 && position[1] <= 9;
+        if (validPosition) adjacents.push(position);
+    } 
+    return adjacents;
+};
+
 //module.exports = { arraysEqual, randomNumber, randomAxis, countElement, countSubstring };
