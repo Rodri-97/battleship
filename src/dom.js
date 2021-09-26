@@ -29,10 +29,10 @@ export const placePlayerShips = (player) => {
         let counter = firstSquareIndex;
         while (counter <= lastSquareIndex) {
             const square = playerSquares[counter];
-            const img = document.createElement("img");
+            /*const img = document.createElement("img");
             img.src = shipIcon;
             img.className = "ship-icon";
-            square.append(img);
+            square.append(img);*/
             square.style.backgroundColor = "green";
             if (ship.axis === "x") counter++;
             else if (ship.axis === "y") counter += 10;
