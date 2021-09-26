@@ -5,7 +5,7 @@
 body {
     background-image: url("../images/background.jpg");
     color: white;
-    font-family: Impact;
+    font-family: Arial, sans-serif;
 }
 
 #title {
@@ -38,7 +38,7 @@ body {
 }
 
 .board-title {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .square {
@@ -66,12 +66,32 @@ body {
     text-align: center;
 }
 
+#player-name {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    font-size: 25px;
+    color: white;
+    background-color: var(--deep-blue);
+    font-family: Impact;
+    padding: 5px;
+}
+
 .button {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 10px;
     cursor: pointer;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    color: var(--deep-blue);
+    font-weight: bold;
+}
+
+.button:hover {
+    font-size: 25px;
 }
 
 #toggle-btn {
