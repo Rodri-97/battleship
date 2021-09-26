@@ -85,6 +85,8 @@ const displayWinner = (winner) => {
     alert(winningMessage);
     const title = document.getElementById("title");
     title.textContent = winningMessage;
+    const replayBtn = document.getElementById("replay-btn");
+    replayBtn.style.display = "block";
 };
 
 export const receiveAttackOnComputer = (square, index, computer, human) => {

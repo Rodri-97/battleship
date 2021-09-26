@@ -83,3 +83,8 @@ newGameBtn.addEventListener("click", () => {
     DOM.renderBoards(human);
     addShips(human);
 });
+
+const replayBtn = document.getElementById("replay-btn");
+replayBtn.addEventListener("click", () => {
+    location.reload();
+});
