@@ -4,7 +4,7 @@
 
 import { Gameboard } from "./gameboard.js";
 import { Ship } from "./ship.js";
-import { randomNumber, randomAxis, arrayContainsArray } from "../helpers.js";
+import { randomNumber, randomAxis, arrayContainsArray, getFreeAdjacent } from "../helpers.js";
 
 export const Player = (name) => {
     const board = Gameboard(10);
@@ -39,6 +39,21 @@ export const Player = (name) => {
     };
 
     const randomPlay = (enemyBoard) => {
+        if (allPlays.length > 0) {
+            const lastPositionAttacked = allPlays[allPlays.length - 1];
+            const row = lastPositionAttacked[0];
+            const column = lastPositionAttacked[1];
+            if (enemyBoard.rows[row][column][0] === "X") {
+                const freeAdjacent = getFreeAdjacent(allPlays, row, column);
+                if (freeAdjacent !== "None") {
+                    const adjacentRow = freeAdjacent[0];
+                    const adjacentColumn = freeAdjacent[1];
+                    attackEnemyBoard(enemyBoard, adjacentRow, adjacentColumn);
+                    return [adjacentRow, adjacentColumn];
+                };
+            };
+        };
+
         let randomRow = randomNumber(0, 10);
         let randomColumn = randomNumber(0, 10);
         while (arrayContainsArray(allPlays, [randomRow, randomColumn])) {

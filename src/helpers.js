@@ -85,4 +85,20 @@ const getAdjacents = (row, column) => {
     return adjacents;
 };
 
+export const getFreeAdjacent = (allPlays, row, column) => {
+    const adjacents = getAdjacents(row, column);
+    const freeAdjacents = [];
+
+    for (let i = 0; i < adjacents.length; i++) {
+        const adjacent = adjacents[i];
+        if (!arrayContainsArray(allPlays, adjacent)) freeAdjacents.push(adjacent);
+    };
+
+    if (freeAdjacents.length === 0) return "None";
+    else {
+        const randomIndex = randomNumber(0, freeAdjacents.length);
+        return freeAdjacents[randomIndex];
+    };
+};
+
 //module.exports = { arraysEqual, randomNumber, randomAxis, countElement, countSubstring };
