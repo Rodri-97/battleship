@@ -66,6 +66,10 @@ body {
     text-align: center;
 }
 
+#player-name-label {
+    font-size: 25px;
+}
+
 #player-name {
     margin-bottom: 20px;
     margin-left: 10px;
@@ -74,6 +78,7 @@ body {
     background-color: var(--deep-blue);
     font-family: Impact;
     padding: 5px;
+    border: 2px solid white;
 }
 
 .button {
