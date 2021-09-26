@@ -77,14 +77,12 @@ const startNewGame = (human) => {
 const newGameBtn = document.getElementById("new-game-btn");
 newGameBtn.addEventListener("click", () => {
     const playerName = document.getElementById("player-name").value;
-    if (playerName.toLowerCase() === "computer") {
-        alert("C'mon, you're not the computer! Try again.");
+    if (playerName.trim() === "" || playerName.toLowerCase() === "computer") {
+        alert("Invalid name. Try again.");
         document.getElementById("player-name").value = "";
         return;
     };
     const human = Player(playerName);
-    //human.placeShipsRandomly();
     DOM.renderBoards(human);
     addShips(human);
-    //startNewGame(human);
 });
