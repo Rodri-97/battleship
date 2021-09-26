@@ -34,7 +34,6 @@ const addShips = (human) => {
             const column = getDigits(i)[1];
             human.board.placeShip(ship, axis, row, column);
             DOM.placePlayerShips(human);
-            console.log(human.board.allShips);
 
             numberOfShips = human.board.allShips.length;
             if (numberOfShips === 1) title.textContent = "Place your battleship";
