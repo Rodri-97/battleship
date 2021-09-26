@@ -74,7 +74,7 @@ const startNewGame = (human) => {
 const newGameBtn = document.getElementById("new-game-btn");
 newGameBtn.addEventListener("click", () => {
     const playerName = document.getElementById("player-name").value;
-    if (playerName.trim() === "" || playerName.toLowerCase() === "computer") {
+    if (playerName.trim() === "" || playerName.toLowerCase().trim() === "computer") {
         alert("Invalid name. Try again.");
         document.getElementById("player-name").value = "";
         return;
