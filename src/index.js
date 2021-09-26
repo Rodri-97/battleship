@@ -24,6 +24,7 @@ const addShips = (human) => {
             else if (numberOfShips === 2) shipLength = 3;
             else if (numberOfShips === 3) shipLength = 3;
             else if (numberOfShips === 4) shipLength = 2;
+            else if (numberOfShips === 5) return;
 
             const ship = Ship(shipLength);
             let axis;
@@ -54,9 +55,6 @@ const startNewGame = (human) => {
     title.textContent = "The game has started!";
     const computer = Player("Computer");
     computer.placeShipsRandomly();
-
-    console.log(human.board.allShips)
-    console.log(computer.board.allShips);
 
     const squares = document.getElementsByClassName("square");
     for (let i = 100; i < squares.length; i++) {
