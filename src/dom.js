@@ -1,20 +1,13 @@
 import { getDigits } from "./helpers.js";
-import shipIcon from "../images/ship-icon.png";
-
-const resetSquares = () => {
-    const squares = document.getElementsByClassName("square");
-    for (let i = 0; i < squares.length; i++) squares[i].style.backgroundColor = "";
-};
 
 export const placePlayerShips = (player) => {
-    resetSquares();
     const playerShips = player.board.allShips;
 
     const squares = document.getElementsByClassName("square");
     const playerSquares = [];
 
     if (player.name.toLowerCase() === "computer") {
-        for (let i = 100; i < 200; i++) playerSquares.push(squares[i]);
+         for (let i = 100; i < 200; i++) playerSquares.push(squares[i]);
     } else {
         for (let i = 0; i < 100; i++) playerSquares.push(squares[i]);
     };
@@ -29,10 +22,6 @@ export const placePlayerShips = (player) => {
         let counter = firstSquareIndex;
         while (counter <= lastSquareIndex) {
             const square = playerSquares[counter];
-            /*const img = document.createElement("img");
-            img.src = shipIcon;
-            img.className = "ship-icon";
-            square.append(img);*/
             square.style.backgroundColor = "green";
             if (ship.axis === "x") counter++;
             else if (ship.axis === "y") counter += 10;
